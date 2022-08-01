@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'task.dart';
-
 import 'package:todo_list/data.dart';
+
+import 'task.dart';
 
 // ignore: must_be_immutable
 class DismTask extends StatefulWidget {
-  DismTask({Key? key, required this.task, required this.taskList, required this.notifyParent}) : super(key: key);
+  DismTask(
+      {Key? key,
+      required this.task,
+      required this.taskList,
+      required this.notifyParent})
+      : super(key: key);
 
   TaskData task;
   List<TaskData> taskList;
@@ -20,14 +25,13 @@ class _DismTaskState extends State<DismTask> {
   Widget build(BuildContext context) {
     return Dismissible(
         key: UniqueKey(),
-
         background: Container(
           color: Colors.red,
         ),
         secondaryBackground: Container(
           color: Colors.green,
         ),
-        onDismissed: (direction){
+        onDismissed: (direction) {
           // Разделение на Удалить/Выполнить, но в данном случае не имеет разницы, тк оно в любом случае удаляется из списка))
           // if(direction == DismissDirection.startToEnd) {
           //   //left - right
@@ -38,10 +42,7 @@ class _DismTaskState extends State<DismTask> {
           // Так что просто удаляем
           widget.notifyParent(widget.task);
         },
-
-        child: SizedBox(
-            width: double.infinity,
-            child:Task(task: widget.task))
-    );
+        child:
+            SizedBox(width: double.infinity, child: Task(task: widget.task)));
   }
 }
