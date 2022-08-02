@@ -25,41 +25,42 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text("Welcome!"),
-              TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
+        padding: const EdgeInsets.only(left: 30, right: 30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text("Welcome!"),
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                hintText: "Введите почту",
+                fillColor: Colors.black12,
+                filled: true,
+              ),
+            ),
+            TextField(
+              controller: passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
                   border: InputBorder.none,
-                  hintText: "Введите почту",
+                  hintText: "********",
                   fillColor: Colors.black12,
-                  filled: true,
-                ),
-              ),
-              TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "********",
-                    fillColor: Colors.black12,
-                    filled: true),
-              ),
-              (show
-                  ? LogInPart(
-                      notifyParent: answerToKid,
-                      emailController: emailController,
-                      passwordController: passwordController)
-                  : SignUpPart(
-                      notifyParent: answerToKid,
-                      emailController: emailController,
-                      passwordController: passwordController))
-            ],
-          )),
+                  filled: true),
+            ),
+            (show
+                ? LogInPart(
+                    notifyParent: answerToKid,
+                    emailController: emailController,
+                    passwordController: passwordController)
+                : SignUpPart(
+                    notifyParent: answerToKid,
+                    emailController: emailController,
+                    passwordController: passwordController))
+          ],
+        ),
+      ),
     );
   }
 }
