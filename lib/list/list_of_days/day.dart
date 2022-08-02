@@ -44,6 +44,7 @@ class Day extends StatefulWidget {
   double height = 0;
 
   late final List<Data> data;
+
   List<TaskData> taskHigh = [];
   List<TaskData> taskMedium = [];
   List<TaskData> taskLow = [];

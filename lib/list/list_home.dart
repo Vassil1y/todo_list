@@ -13,7 +13,8 @@ class ListHome extends StatefulWidget {
 }
 
 class _ListHomeState extends State<ListHome> {
-  void refer(TaskData k) {
+
+  void answerToKid(TaskData k) {
     setState(() {
       for (var j in totalData.list) {
         j.taskList.remove(k);
@@ -43,7 +44,7 @@ class _ListHomeState extends State<ListHome> {
                       return Day(
                         data: totalData.list,
                         dayIndex: index1,
-                        notifyParent: refer,
+                        notifyParent: answerToKid,
                       );
                     },
                   )))

@@ -1,13 +1,25 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_list/list/list_home.dart';
-import 'package:todo_list/services/auth.dart';
+import 'package:todo_list/auth/buttons_parts/log_in_part.dart';
+import 'package:todo_list/auth/buttons_parts/sign_up_part.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   AuthPage({Key? key}) : super(key: key);
 
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  bool show = true;
+
+  void answerToKid() {
+    setState(() {
+      show = !show;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +30,32 @@ class AuthPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text("Log In"),
+              const Text("Welcome!"),
               TextField(
-                controller: emailController,
-              ),
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Введите почту",
+                    fillColor: Colors.black12,
+                    filled: true,
+                  )),
               TextField(
-                controller: passwordController,
-              ),
-              TextButton(
-                  onPressed: () async {
-                    User? user = await loginUsingEmailAndPassword(
-                        emailController.text, passwordController.text);
-                    if (user != null) {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => ListHome()));
-                    }
-                  },
-                  child: const Text("Forward"))
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "********",
+                      fillColor: Colors.black12,
+                      filled: true)),
+              (show
+                  ? LogInPart(
+                      notifyParent: answerToKid,
+                      emailController: emailController,
+                      passwordController: passwordController)
+                  : SignUpPart(
+                      notifyParent: answerToKid,
+                      emailController: emailController,
+                      passwordController: passwordController))
             ],
           )),
     );
