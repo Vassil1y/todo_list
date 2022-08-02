@@ -32,21 +32,23 @@ class _AuthPageState extends State<AuthPage> {
             children: [
               const Text("Welcome!"),
               TextField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Введите почту",
-                    fillColor: Colors.black12,
-                    filled: true,
-                  )),
+                controller: emailController,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Введите почту",
+                  fillColor: Colors.black12,
+                  filled: true,
+                ),
+              ),
               TextField(
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "********",
-                      fillColor: Colors.black12,
-                      filled: true)),
+                controller: passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "********",
+                    fillColor: Colors.black12,
+                    filled: true),
+              ),
               (show
                   ? LogInPart(
                       notifyParent: answerToKid,

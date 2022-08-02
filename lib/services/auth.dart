@@ -12,5 +12,3 @@ Future<User?> loginUsingEmailAndPassword(String email, String password) async {
   }
   return user;
 }
-
-

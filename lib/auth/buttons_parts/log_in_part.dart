@@ -6,7 +6,10 @@ import '../../services/auth.dart';
 
 class LogInPart extends StatefulWidget {
   LogInPart(
-      {Key? key, required this.notifyParent, required this.emailController, required this.passwordController})
+      {Key? key,
+      required this.notifyParent,
+      required this.emailController,
+      required this.passwordController})
       : super(key: key);
 
   final Function() notifyParent;
@@ -18,8 +21,6 @@ class LogInPart extends StatefulWidget {
 }
 
 class _LogInPartState extends State<LogInPart> {
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,10 +39,10 @@ class _LogInPartState extends State<LogInPart> {
           },
         ),
         TextButton(
-            onPressed: () {
-              widget.notifyParent();
-            },
-            child: const Text("Don't have account yet? Sign Up!"),
+          onPressed: () {
+            widget.notifyParent();
+          },
+          child: const Text("Don't have account yet? Sign Up!"),
         )
       ],
     );
