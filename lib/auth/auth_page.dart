@@ -30,7 +30,11 @@ class _AuthPageState extends State<AuthPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text("Welcome!"),
+            Container(
+              margin: const EdgeInsets.only(bottom: 20),
+              child: const Text("Welcome!", style: TextStyle(fontSize: 20),
+              ),
+            ),
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
