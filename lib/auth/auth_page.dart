@@ -35,7 +35,7 @@ class _AuthPageState extends State<AuthPage> {
               controller: emailController,
               decoration: const InputDecoration(
                 border: InputBorder.none,
-                hintText: "Введите почту",
+                hintText: "Input_mail@smth.kek",
                 fillColor: Colors.black12,
                 filled: true,
               ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../list/list_home.dart';
 import '../../services/auth.dart';
 
-class LogInPart extends StatefulWidget {
+class LogInPart extends StatelessWidget {
   LogInPart(
       {Key? key,
       required this.notifyParent,
@@ -17,11 +17,6 @@ class LogInPart extends StatefulWidget {
   TextEditingController passwordController;
 
   @override
-  State<LogInPart> createState() => _LogInPartState();
-}
-
-class _LogInPartState extends State<LogInPart> {
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -30,7 +25,7 @@ class _LogInPartState extends State<LogInPart> {
           icon: const Icon(Icons.login),
           onPressed: () async {
             User? user = await loginUsingEmailAndPassword(
-                widget.emailController.text, widget.passwordController.text);
+                emailController.text, passwordController.text);
 
             if (user != null) {
               Navigator.of(context).pushReplacement(
@@ -40,7 +35,7 @@ class _LogInPartState extends State<LogInPart> {
         ),
         TextButton(
           onPressed: () {
-            widget.notifyParent();
+            notifyParent();
           },
           child: const Text("Don't have account yet? Sign Up!"),
         )

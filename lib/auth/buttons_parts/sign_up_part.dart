@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPart extends StatefulWidget {
+class SignUpPart extends StatelessWidget {
   SignUpPart(
       {Key? key,
       required this.notifyParent,
@@ -14,11 +14,6 @@ class SignUpPart extends StatefulWidget {
   TextEditingController passwordController;
 
   @override
-  State<SignUpPart> createState() => _SignUpPartState();
-}
-
-class _SignUpPartState extends State<SignUpPart> {
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -27,14 +22,14 @@ class _SignUpPartState extends State<SignUpPart> {
           label: const Text("Sign Up!"),
           onPressed: () {
             FirebaseAuth.instance.createUserWithEmailAndPassword(
-                email: widget.emailController.text,
-                password: widget.passwordController.text);
-            widget.notifyParent();
+                email: emailController.text,
+                password: passwordController.text);
+            notifyParent();
           },
         ),
         TextButton(
           onPressed: () {
-            widget.notifyParent();
+            notifyParent();
           },
           child: const Text("Already have account? Log in!"),
         )
